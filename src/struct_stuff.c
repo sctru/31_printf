@@ -16,6 +16,7 @@ void	init_struct(t_params *params)
 {
 	params->printed = 0;
 	params->modifier = 0;
+	params->width_flag = 0;
 	params->width = 0;
 	params->precision_flag = 0;
 	params->precision = 0;
@@ -33,10 +34,44 @@ void	debug_struct(t_params params)
 	printf("width: %d\n", params.width);
 	printf("precision: %d\n", params.precision);
 	printf("precision flag: %d\n", params.precision_flag);
+	printf("width flag: %d\n", params.width_flag);
 	printf("pound: %d\nzero: %d\nminus: %d\nspace: %d\nplus: %d\n",params.pound_flag, params.zero_flag, params.minus_flag, params.space_flag, params.plus_flag);
 }
 
-int		lflag_check(char **str, t_params *params)
+void		other_check(char **str, t_params *params, va_list var_list)
+{
+	if(**str > '0' && **str <= '9')
+	{
+		params->width = simple_atoi(*str);
+		(*str) += ft_numlength(params->width) - 1;
+		params->width_flag = 1;
+	}
+	if(**str == '*')
+	{
+		params->width = va_arg(var_list, int);
+		params->width_flag = 1;
+	}
+	if(**str == '.')
+	{
+		if((int)ft_strlen(*str) > 1)
+		{
+			if(*(*str + 1) == '*')
+			{	
+				params->precision = va_arg(var_list, int);
+				(*str)++;
+			}
+			else
+			{
+				(*str)++;
+				params->precision = simple_atoi(*str);
+				(*str) += ft_numlength(params->precision) - 1;
+			}
+		}
+		params->precision_flag = 1;
+	}
+}
+
+void	lflag_check(char **str, t_params *params, va_list var_list)
 {
 	if(**str == 'h')
 		params->modifier = 2;
@@ -59,10 +94,10 @@ int		lflag_check(char **str, t_params *params)
 			(*str)++;
 		}
 	}
-	return (0);
+	other_check(str, params, var_list);
 }
 
-int		flag_check(char **str, t_params *params)
+void	flag_check(char **str, t_params *params, va_list var_list)
 {
 	if(**str == '#')
 		params->pound_flag = 1;	
@@ -74,36 +109,6 @@ int		flag_check(char **str, t_params *params)
 		params->plus_flag = 1;
 	else if(**str == ' ')
 		params->space_flag = 1;
-	lflag_check(str, params);
-	return (0);
+	lflag_check(str, params, var_list);
 }
 
-void		other_check(char **str, t_params *params, va_list var_list)
-{
-	if(**str > '0' && **str <= '9')
-	{
-		params->width = simple_atoi(*str);
-		(*str) += ft_numlength(params->precision);
-	}
-	if(**str == '*')
-		params->width = va_arg(var_list, int);
-	if(**str == '.')
-	{
-		if((int)ft_strlen(*str) > 1)
-		{
-			if(*(*str + 1) == '*')
-			{	
-				params->precision = va_arg(var_list, int);
-				(*str)++;
-			}
-			else
-			{
-				(*str)++;
-				params->precision = simple_atoi(*str);
-				(*str) += ft_numlength(params->precision) - 1;
-			}
-		}
-		params->precision_flag = 1;
-	}
-	flag_check(str, params);
-}

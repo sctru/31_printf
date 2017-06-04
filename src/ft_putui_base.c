@@ -24,7 +24,7 @@ void	ft_putui_base(unsigned long num, unsigned int base, int cap, t_params *para
 
 	if(params->pound_flag == 1)
 	{
-		if(base == 8)
+		if(base == 8 && num != 0)
 			ft_putchar('0');
 		else if(base == 16)
 			ft_putstr(hexhead[cap]);

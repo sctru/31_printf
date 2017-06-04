@@ -12,55 +12,60 @@
 
 #include "libftprintf.h"
 
-void	string_fill(char c, char *str, int len)
+void	string_fill(char c, int len)
 {
 	int x;
 
 	x = 0;
-	while(x < len)
-		str[x++] = c;
+	while(x++ < len)
+		ft_putchar(c);
+}
+
+void	part_string(char *str, int len)
+{
+	int x;
+
+	x = 0;
+	while(x < len && str[x] != '\0')
+		ft_putchar(str[x++]);
 }
 
 void	print_string(t_params *params, va_list var_list)
 {
 	int		len;
 	char	*str;
-	char	*buff;
-	char	*tmp;
 	
-	tmp = NULL;
 	str = va_arg(var_list, char*);
 	len = ft_strlen(str);
-	if(params->precision < len)
-	{
-		buff = ft_strnew(len);
-		str = ft_strncpy(buff, str, len);
-		len = params->precision;
-		free(buff);
-	}
-	if(params->width > len)
-	{
-		buff = ft_strnew(params->width - len);
-		string_fill(' ', buff, params->width - len);
-		if(params->minus_flag)
-			tmp = ft_strjoin(str, buff);
+	if(params->minus_flag)
+	{	
+		if(params->precision < len && params->precision_flag)
+		{
+			part_string(str, params->precision);
+			len = params->precision;
+			if(params->width > len)
+				string_fill(' ', params->width - len);
+		}
 		else
-			tmp = ft_strjoin(buff, str);
-		free(buff);
+			ft_putstr(str);
 	}
-	if(tmp == NULL)
-		ft_putstr(str);
 	else
-		ft_putstr(tmp);
+	{	
+		if(params->precision < len && params->precision_flag)
+			len = params->precision;
+		if(params->width > len)
+			string_fill(' ', params->width - len);
+		part_string(str, len);
+	}
 	params->printed = 1;
 }
 
 void	print_wstring(t_params *params, va_list var_list)
 {
 	/* read va_args with wint_t, get size of wchar_t. Save as char *str, put str */
-	wchar_t *wstr;
+	char *wstr;
 
-	wstr = va_arg(var_list, wchar_t*);
-	ft_putstr((char*)wstr);
+	wstr = va_arg(var_list, char*);
+	ft_putstr(wstr);
 	params->printed = 1;
 }

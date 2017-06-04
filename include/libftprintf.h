@@ -23,8 +23,9 @@ typedef struct	s_params
 	char		printed;
 	/* modifiers: 1-hh 2-h 3-ll 4-l 5-j 6-z */
 	char		modifier;
+	char		width_flag;
 	int			width;
-	int			precision_flag;
+	char		precision_flag;
 	int			precision;
 	char		pound_flag;
 	char		zero_flag;
@@ -40,12 +41,13 @@ void			debug_struct(t_params params);
 int				arg_count_check(va_list list, char *str);
 /* parsing, interpreting functions */
 void			other_check(char **str, t_params *params, va_list var_list);
+void			flag_check(char **str, t_params *params, va_list var_list);
 int				parse_string(char **str, va_list var_list);
 int				error_check(char* str, va_list var_list);
 /*string helper functions */
-void			string_fill(char c, char *str, int len);
+void			string_fill(char c, int len);
 /*int helper functions */
-int				b_trim(int num, int base, int trimto);
+void			print_int_wp(t_params *params, int num, int len);
 void			print_fill(t_params *params, int count);
 int				grab_number(t_params *params, va_list var_list);
 int				ft_base_numlength(long number, int base);

@@ -12,13 +12,6 @@
 
 #include "libftprintf.h"
 
-int		b_trim(int num, int base, int trimto)
-{
-	while(ft_numlength(num) > trimto)
-		num /= base;
-	return (num);
-}
-
 int		grab_number(t_params *params, va_list var_list)
 {
 	int	num;
@@ -39,6 +32,20 @@ int		grab_number(t_params *params, va_list var_list)
 	else
 		num = va_arg(var_list, int);
 	return (num);
+}
+
+
+void	print_fill(t_params *params, int count)
+{
+	int		x;
+	char	c;
+	
+	x = 0;
+	c = ' ';
+	if(params->zero_flag == 1)
+		c = '0';
+	while(x++ < count)
+		write(1, &c, 1);
 }
 
 void	pad_int(t_params *params, int count, int num)
@@ -65,19 +72,6 @@ void	pad_int(t_params *params, int count, int num)
 	}
 }
 
-void	print_fill(t_params *params, int count)
-{
-	int		x;
-	char	c;
-	
-	x = 0;
-	c = ' ';
-	if(params->zero_flag == 1)
-		c = '0';
-	while(x++ < count)
-		write(1, &c, 1);
-}
-
 void	print_int(t_params *params, va_list var_list)
 {
 	int	len;
@@ -87,6 +81,12 @@ void	print_int(t_params *params, va_list var_list)
 	len = ft_base_numlength(num, 10);
 	if(!(num == 0 && params->precision_flag == 1 && params->precision == 0))
 	{
+		if(params->precision_flag && params->width_flag)
+		{
+			print_int_wp(params, num, len);
+			params->printed = 1;
+			return ;
+		}
 		if(params->width > len)
 		pad_int(params, params->width - len, num);
 		else
@@ -99,6 +99,48 @@ void	print_int(t_params *params, va_list var_list)
 		}
 	}
 	params->printed = 1;
+}
+
+void	print_int_wp(t_params *params, int num, int len)
+{
+	
+	if(params->precision > params->width && params->precision > len)
+	{
+		params->zero_flag = 1;
+		params->minus_flag = 0;
+		pad_int(params, params->precision - len, num);
+		
+	}
+	else if(params->width > params->precision && params->width > len)
+	{
+		if(params->precision > len)
+			if(params->minus_flag)
+			{
+				params->minus_flag = 0;
+				params->zero_flag = 1;
+				pad_int(params, params->precision - len, num);
+				string_fill(' ', params->width - params->precision);
+			}
+			else
+			{	
+				string_fill(' ', params->width - params->precision);
+				pad_int(params, params->precision - len, num);
+			}
+		else
+		{
+			params->zero_flag = 0;
+			pad_int(params, params->width - len, num);
+		}
+	}
+	else if(params->precision == params->width)
+	{
+		if(params->precision > len)
+			pad_int(params, params->precision, num);
+		else
+			ft_putnbr(num);
+	}
+	else
+		ft_putnbr(num);
 }
 
 
