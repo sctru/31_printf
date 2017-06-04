@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 
 void	string_fill(char c, char *str, int len)
 {

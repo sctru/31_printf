@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 
 void		print_char(t_params *params, va_list var_list)
 {

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 
 int		b_trim(int num, int base, int trimto)
 {

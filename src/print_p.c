@@ -17,7 +17,7 @@ void	print_pointer(t_params *params, va_list var_list)
 	unsigned long stor;
 
 	stor = va_arg(var_list, unsigned long);
-	ft_putstr(ft_itoa_base(stor, 16));
+	ft_putui_base(stor, 16, 0);
 	params->printed = 1;
 }
 

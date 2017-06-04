@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libftprintf.h"
 
-/* only handles negatives in decimal (base 10)...*/
-/* not normed */
-/* memory leaks 2x */
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 void	ft_putui_base(unsigned int num, unsigned int base, int cap)
 {
@@ -32,54 +32,23 @@ void	ft_putui_base(unsigned int num, unsigned int base, int cap)
 		ft_putchar(basestr[cap][(num % base)]);
 }
 
-static char	*rev_str(char *str)
+void	ft_putnbr(int n)
 {
-	int x = 0;
-	int y = 0;
-	while (str[x] != '\0')
-		x++;
-	char *tmp = (char *)malloc(sizeof(char) * (x + 1));
-	while(x-- > 0)
-		tmp[y++] = str[x];
-	tmp[y] = '\0';
-	free (str);
-	return (tmp);
-}
-
-static char	base_char(int val, int base)
-{
-	if (base > 9 && val > 9)
-		return (val - 10 + 'A');
-	if(val < base && val < 0)
+	if (n == -2147483648)
 	{
-		if (base > 9 && val < -9)
-			return (-val - 10 + 'A');
-		return (-val + '0');
+		ft_putstr("-2147483648");
+		return ;
 	}
-	return (val + '0');
-}
-
-char	*ft_itoa_base(int value, int base)
-{
-	long x = value;
-	int	length = 0;
-	int neg_flag = 0;
-	char *ret;
-
-	if (base == 10 && value < 0)
-		neg_flag = 1;
-	while (x /= base)
-		length++;
-	ret = (char *)malloc(sizeof(char) * (length + 1));
-	if(value == 0)
-		ret[x++] = '0';
-	while(value != 0)
+	if (n < 0)
 	{
-		ret[x++] = base_char(value % base, base);
-		value /= base;
+		ft_putchar('-');
+		n = -n;
 	}
-	if(neg_flag)
-		ret[x++] = '-';
-	ret[x] = '\0';
-	return  (rev_str(ret));
+	if (n >= 10)
+	{
+		ft_putnbr(n / 10);
+		ft_putchar(n % 10 + '0');
+	}
+	if (n < 10)
+		ft_putchar(n % 10 + '0');
 }

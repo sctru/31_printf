@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 
 void	parse_helper(char **str, t_params *params, va_list var_list)
 {
@@ -70,7 +69,7 @@ void	ft_printf(char *str, ...)
 		if (*str == '%')
 			parse_string(&str, var_list);
 		else
-			write(1, &*str++, 1);
+			write(1, str++, 1);
 	}
 	va_end(var_list);
 }

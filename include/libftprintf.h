@@ -13,7 +13,6 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include "libft.h"
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -67,4 +66,15 @@ void			print_char(t_params *params, va_list var_list);
 void			print_wchar(t_params *params, va_list var_list);
 void			print_percent(t_params *params);
 
+/* libft prototypes */
+size_t			ft_strlen(const char *str);
+char			*ft_strnew(size_t size);
+char			*ft_strncpy(char *dest, const char *src, size_t n);
+char			*ft_strjoin(char const *s1, char const *s2);
+void			ft_putstr(char const *str);
+int				ft_strncmp(char *str1, char *str2, size_t size);
+int				ft_numlength(long number);
+int				simple_atoi(char *str);
+void			ft_putchar(char c);
+void			ft_putnbr(int n);
 #endif

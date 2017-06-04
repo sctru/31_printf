@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 
 void	pad_uint(t_params *params, int count, unsigned int num)
 {

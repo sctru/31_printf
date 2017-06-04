@@ -19,15 +19,12 @@ INC = -I ./include
 
 MAIN = test.c
 
-FILES = ft_printf.c error_check.c print_s.c struct_stuff.c \
-print_int.c ft_putui_base.c print_p.c print_o.c ft_base_numlength.c \
-print_x.c print_u.c print_c.c
-
-LIB = libft.a
+FILES = ft_printf.c error_check.c  struct_stuff.c \
+print_int.c print_s.c print_p.c print_o.c print_x.c print_u.c print_c.c \
+ft_base_numlength.c ft_putui_base.c libft_import.c libft_import2.c
 
 OBJ = $(addprefix build/, $(FILES:.c=.o))
 SRC = $(FILES)
-
 
 .PHONY: all clean fclean re test
 
@@ -54,7 +51,7 @@ fclean: clean
 
 test:
 	make re
-	$(CC) $(NAME) $(LIB) $(MAIN) $(INC)
+	$(CC) $(NAME) $(MAIN) $(INC)
 	./a.out
 
 re: fclean all

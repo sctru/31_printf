@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 
 void	init_struct(t_params *params)
 {
@@ -83,7 +82,7 @@ void		other_check(char **str, t_params *params, va_list var_list)
 {
 	if(**str > '0' && **str <= '9')
 	{
-		params->width = ft_atoi(*str);
+		params->width = simple_atoi(*str);
 		(*str) += ft_numlength(params->precision);
 	}
 	if(**str == '*')
@@ -100,7 +99,7 @@ void		other_check(char **str, t_params *params, va_list var_list)
 			else
 			{
 				(*str)++;
-				params->precision = ft_atoi(*str);
+				params->precision = simple_atoi(*str);
 				(*str) += ft_numlength(params->precision) - 1;
 			}
 		}

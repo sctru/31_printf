@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "libft.h"
 
 void	test_funct(char *str, ...)
 {
@@ -72,6 +71,5 @@ int main (int argc, char **argv)
 	unsigned int b = 0xFFFFFF;
 	int g = 2147483648;
 
-	ft_putui_base(b, 16, 1);
-	ft_putui_base(b, 16, 0);
+	ft_printf("???\n%sasdf\n", string);
 }
