@@ -51,7 +51,7 @@ int				grab_number(t_params *params, va_list var_list);
 int				ft_base_numlength(long number, int base);
 /*unsigned int helper functions */
 unsigned int	grab_uint(t_params *params, va_list var_list);
-void			ft_putui_base(unsigned int num, unsigned int base, int cap, t_params *params);
+void			ft_putui_base(unsigned long num, unsigned int base, int cap, t_params *params);
 
 /* top level print functions */
 void			print_string(t_params *params, va_list var_list);

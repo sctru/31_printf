@@ -17,7 +17,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_putui_base(unsigned int num, unsigned int base, int cap, t_params *params)
+void	ft_putui_base(unsigned long num, unsigned int base, int cap, t_params *params)
 {
 	const char		*basestr[2] = {"0123456789ABCDEF", "0123456789abcdef"};
 	const char		*hexhead[2] = {"0X", "0x"};

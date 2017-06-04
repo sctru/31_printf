@@ -36,7 +36,7 @@ void	pad_uint(t_params *params, int count, unsigned int num)
 	}
 }
 
-void			print_uint_b10(t_params *params, va_list var_list)
+void	print_uint_b10(t_params *params, va_list var_list)
 {
 	int				len;
 	unsigned int	num;

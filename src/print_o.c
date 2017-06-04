@@ -75,8 +75,6 @@ void		print_uint_oct(t_params *params, va_list var_list)
 			ft_putchar('+');
 		else if(params->space_flag == 1 && num > 0)
 			ft_putchar(' ');
-		if(params->pound_flag == 1)
-			ft_putchar('0');
 		ft_putui_base(num, 8, 0, params);
 		}
 	}

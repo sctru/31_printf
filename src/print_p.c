@@ -16,9 +16,9 @@ void	print_pointer(t_params *params, va_list var_list)
 {
 	unsigned long stor;
 
-	stor = va_arg(var_list, intmax_t);
+	stor = va_arg(var_list, unsigned long);
 	params->pound_flag = 1;
-	ft_putui_base(stor, 16, 0, params);
+	ft_putui_base(stor, 16, 1, params);
 	params->printed = 1;
 }
 
@@ -27,3 +27,4 @@ void	print_percent(t_params *params)
 	ft_putchar('%');
 	params->printed = 1;
 }
+
