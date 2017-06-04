@@ -64,12 +64,12 @@ void			print_string(t_params *params, va_list var_list);
 void			print_wstring(t_params *params, va_list var_list);
 void			print_pointer(t_params *params, va_list var_list);
 void			print_decimal(t_params *params, va_list var_list);
-void			print_int(t_params *params, va_list var_list);
+void			print_int(t_params *params, va_list var_list, char type);
 void			print_uint_oct(t_params *params, va_list var_list);
 void			print_uint_b10(t_params *params, va_list var_list);
 void			print_uint_hex(t_params *params, va_list var_list, int cap);
 void			print_char(t_params *params, va_list var_list);
-void			print_wchar(t_params *params, va_list var_list);
+void			print_wchar(t_params *params, va_list var_list, int flag, int c_in);
 void			print_percent(t_params *params);
 
 /* libft prototypes */

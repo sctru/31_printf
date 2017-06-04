@@ -18,7 +18,7 @@ void		print_char(t_params *params, va_list var_list)
 
 	if(params->modifier == 4)
 	{
-		print_wchar(params, var_list);
+		print_wchar(params, var_list, 0, 0);
 		return ;
 	}	
 	c = va_arg(var_list, int);
@@ -26,18 +26,21 @@ void		print_char(t_params *params, va_list var_list)
 	params->printed = 1;
 }
 
-void		print_wchar(t_params *params, va_list var_list)
+void		print_wchar(t_params *params, va_list var_list, int flag, int c_in)
 {
 	// char w;
 
 	// w = va_arg(var_list, int);
 	// ft_putchar(w);
-
+	
 	int		c;
 	char	wc[4];
 	size_t	index;
 
-	c = va_arg(var_list, int);
+	if(flag == 0)
+		c = va_arg(var_list, int);
+	else
+		c = c_in;
 	index = 0;
 	wc[3] = (c >= 0x000000FF && ++index) ? (128 + c % 64) : c;
 	if (index == 1)

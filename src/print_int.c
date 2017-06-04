@@ -72,10 +72,13 @@ void	pad_int(t_params *params, int count, int num)
 	}
 }
 
-void	print_int(t_params *params, va_list var_list)
+void	print_int(t_params *params, va_list var_list, char type)
 {
 	int	len;
 	int	num;
+	
+	if(type == 'D' && params->modifier == 0)
+		params->modifier = 3;
 	if(params->modifier > 2)
 	{
 		print_big_int(params, var_list);
@@ -104,7 +107,7 @@ void	print_int(t_params *params, va_list var_list)
 		}
 	}
 	params->printed = 1;
-}
+} 
 
 
 

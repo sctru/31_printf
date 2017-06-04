@@ -21,7 +21,7 @@ void	parse_helper(char **str, t_params *params, va_list var_list)
 	else if(**str == 'p')
 	 	print_pointer(params, var_list);
 	else if(**str == 'i' || **str == 'd' || **str == 'D')
-	 	print_int(params, var_list);
+	 	print_int(params, var_list, **str);
 	else if(**str == 'o' || **str == 'O')
 	 	print_uint_oct(params, var_list);
 	else if(**str == 'u' || **str == 'U')
@@ -33,7 +33,7 @@ void	parse_helper(char **str, t_params *params, va_list var_list)
 	else if(**str == 'c')
 		print_char(params, var_list);
 	else if(**str == 'C')
-		print_wchar(params, var_list);
+		print_wchar(params, var_list, 0, 0);
 	else if(**str == '%')
 		print_percent(params);
 	else
