@@ -41,7 +41,7 @@ void	ft_putui_base(unsigned long num, unsigned int base, int cap, t_params *para
 		ft_putchar(basestr[cap][(num % base)]);
 }
 
-void	ft_putnbr(long long n)
+void	ft_putnbr(long n)
 {
 	if (n < 0)
 	{

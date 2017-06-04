@@ -30,7 +30,7 @@ int		ft_strncmp(char *str1, char *str2, size_t size)
 	return ((unsigned char)*str1 - (unsigned char)*str2);
 }
 
-int	ft_numlength(long long number)
+int	ft_numlength(long number)
 {
 	int neg_flag;
 	int count;
