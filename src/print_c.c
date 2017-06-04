@@ -29,10 +29,10 @@ void		print_char(t_params *params, va_list var_list)
 void		print_wchar(t_params *params, va_list var_list, int flag, int c_in)
 {
 	char	*str;
-	wchar_t		c;
+	int		c;
 
 	if(flag == 0)
-		c = va_arg(var_list, wchar_t);
+		c = va_arg(var_list, int;
 	else
 		c = c_in;
 	str = ft_strnew(4);
