@@ -17,7 +17,7 @@ void	string_fill(char c, int len)
 	int x;
 
 	x = 0;
-	while(x++ < len)
+	while (x++ < len)
 		ft_putchar(c);
 }
 
@@ -26,7 +26,7 @@ void	part_string(char *str, int len)
 	int x;
 
 	x = 0;
-	while(x < len && str[x] != '\0')
+	while (x < len && str[x] != '\0')
 		ft_putchar(str[x++]);
 }
 
@@ -34,26 +34,25 @@ void	print_string(t_params *params, va_list var_list)
 {
 	int		len;
 	char	*str;
-	
+
 	str = va_arg(var_list, char*);
 	len = ft_strlen(str);
-	if(params->minus_flag)
-	{	
-		if(params->precision < len && params->precision_flag)
+	if (params->minus_flag)
+	{
+		if (params->precision < len && params->precision_flag)
 		{
 			part_string(str, params->precision);
-			len = params->precision;
-			if(params->width > len)
-				string_fill(' ', params->width - len);
+			if (params->width > len)
+				string_fill(' ', params->width - params->precision);
 		}
 		else
 			ft_putstr(str);
 	}
 	else
-	{	
-		if(params->precision < len && params->precision_flag)
+	{
+		if (params->precision < len && params->precision_flag)
 			len = params->precision;
-		if(params->width > len)
+		if (params->width > len)
 			string_fill(' ', params->width - len);
 		part_string(str, len);
 	}
@@ -62,16 +61,13 @@ void	print_string(t_params *params, va_list var_list)
 
 void	print_wstring(t_params *params, va_list var_list)
 {
-	/* read va_args with wint_t, get size of wchar_t. Save as char *str, put str */
 	wchar_t *wstr;
-		
-	wstr = va_arg(var_list, wchar_t*);
 
-	while(*wstr)
+	wstr = va_arg(var_list, wchar_t*);
+	while (*wstr)
 	{
 		print_wchar(params, var_list, 1, *wstr++);
 		(wstr)++;
 	}
-	
 	params->printed = 1;
 }

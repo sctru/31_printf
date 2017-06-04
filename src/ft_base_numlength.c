@@ -17,18 +17,18 @@ int	ft_base_numlength(long number, int base)
 	int neg_flag;
 	int count;
 
-	if(base == 0)
+	if (base == 0)
 		return (1);
 	count = 0;
 	neg_flag = 0;
-	if(number < 0)
+	if (number < 0)
 		neg_flag = 1;
-	while(number != 0)
+	while (number != 0)
 	{
 		number /= base;
 		count++;
 	}
-	if(neg_flag)
+	if (neg_flag)
 		return (count + 1);
 	return (count);
 }

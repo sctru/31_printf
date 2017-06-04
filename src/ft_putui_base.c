@@ -17,28 +17,28 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_putui_base(unsigned long num, unsigned int base, int cap, t_params *params)
+void	ft_putui_base(unsigned long num, unsigned int base, int c, t_params *p)
 {
 	const char		*basestr[2] = {"0123456789ABCDEF", "0123456789abcdef"};
 	const char		*hexhead[2] = {"0X", "0x"};
 
-	if(params->pound_flag == 1)
+	if (p->pound_flag == 1)
 	{
-		if(base == 8 && num != 0)
+		if (base == 8 && num != 0)
 			ft_putchar('0');
-		else if(base == 16)
-			ft_putstr(hexhead[cap]);
-		params->pound_flag = 0;
+		else if (base == 16)
+			ft_putstr(hexhead[c]);
+		p->pound_flag = 0;
 	}
-	if(base == 0)
+	if (base == 0)
 		return ;
 	if (num >= base)
 	{
-		ft_putui_base(num / base, base, cap, params);
-		ft_putchar(basestr[cap][(num % base)]);
+		ft_putui_base(num / base, base, c, p);
+		ft_putchar(basestr[c][(num % base)]);
 	}
 	if (num < base)
-		ft_putchar(basestr[cap][(num % base)]);
+		ft_putchar(basestr[c][(num % base)]);
 }
 
 void	ft_putnbr(long n)

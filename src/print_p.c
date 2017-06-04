@@ -27,4 +27,3 @@ void	print_percent(t_params *params)
 	ft_putchar('%');
 	params->printed = 1;
 }
-

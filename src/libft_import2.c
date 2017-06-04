@@ -12,9 +12,9 @@
 
 #include "libftprintf.h"
 
-int		ft_strncmp(char *str1, char *str2, size_t size)
+int			ft_strncmp(char *str1, char *str2, size_t size)
 {
-	unsigned long x;
+	unsigned long	x;
 
 	x = 0;
 	if (size == 0)
@@ -30,21 +30,21 @@ int		ft_strncmp(char *str1, char *str2, size_t size)
 	return ((unsigned char)*str1 - (unsigned char)*str2);
 }
 
-int	ft_numlength(long number)
+int			ft_numlength(long number)
 {
 	int neg_flag;
 	int count;
 
 	count = 0;
 	neg_flag = 0;
-	if(number < 0)
+	if (number < 0)
 		neg_flag = 1;
-	while(number != 0)
+	while (number != 0)
 	{
 		number /= 10;
 		count++;
 	}
-	if(neg_flag)
+	if (neg_flag)
 		return (count + 1);
 	return (count);
 }
@@ -58,12 +58,11 @@ static int	ft_isdigit(int c)
 
 int			simple_atoi(char *str)
 {
-	int x;
-	int count;
-	
+	int	x;
+	int	count;
+
 	count = 0;
 	x = 0;
-
 	while (ft_isdigit(str[x]))
 	{
 		count = count * 10 + (str[x] - '0');
