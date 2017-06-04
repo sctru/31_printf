@@ -68,7 +68,10 @@ void	print_wstring(t_params *params, va_list var_list)
 	wstr = va_arg(var_list, void*);
 
 	while(*wstr)
+	{
 		print_wchar(params, var_list, 1, *wstr++);
+		*wstr++;
+	}
 	
 	params->printed = 1;
 }
