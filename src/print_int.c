@@ -52,6 +52,8 @@ void	pad_int(t_params *params, int count, int num)
 {
 	if((params->plus_flag == 1 || params->space_flag == 1) && num > 0)
 		count--;
+	if(params->precision_flag && params->width_flag && params->precision > params->width)
+		count++;
 	if(params->minus_flag == 1)
 	{
 		if(params->plus_flag == 1 && num > 0)
@@ -108,8 +110,13 @@ void	print_int_wp(t_params *params, int num, int len)
 	{
 		params->zero_flag = 1;
 		params->minus_flag = 0;
+		if(params->space_flag && num > 0)
+			ft_putchar(' ');
+		if(params->plus_flag && num > 0)
+			ft_putchar('+');
+		params->space_flag = 0;
+		params->plus_flag = 0;
 		pad_int(params, params->precision - len, num);
-		
 	}
 	else if(params->width > params->precision && params->width > len)
 	{
@@ -141,6 +148,7 @@ void	print_int_wp(t_params *params, int num, int len)
 	}
 	else
 		ft_putnbr(num);
+	params->printed = 1;
 }
 
 
