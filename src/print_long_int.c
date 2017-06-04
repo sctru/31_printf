@@ -58,8 +58,6 @@ void		print_big_int(t_params *params, va_list var_list)
 	params->printed = 1;
 }
 
-
-
 void	print_int_wp(t_params *params, int num, int len)
 {
 	

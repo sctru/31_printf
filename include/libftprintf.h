@@ -48,11 +48,12 @@ int				error_check(char* str, va_list var_list);
 void			string_fill(char c, int len);
 /*int helper functions */
 void			print_int_wp(t_params *params, int num, int len);
-void	pad_int(t_params *params, int count, int num);
+void			pad_int(t_params *params, int count, int num);
 void			print_fill(t_params *params, int count);
 int				grab_number(t_params *params, va_list var_list);
 int				ft_base_numlength(long number, int base);
 void			print_big_int(t_params *params, va_list var_list);
+void			put_big_number(long long n);
 long long		grab_big_num(t_params *params, va_list var_list);
 /*unsigned int helper functions */
 unsigned int	grab_uint(t_params *params, va_list var_list);
