@@ -28,9 +28,9 @@ void		print_char(t_params *params, va_list var_list)
 
 void		print_wchar(t_params *params, va_list var_list)
 {
-	wchar_t w;
+	char w;
 
-	w = va_arg(var_list, wchar_t);
+	w = va_arg(var_list, int);
 	ft_putchar(w);
 	params->printed = 1;
 }
