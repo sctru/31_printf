@@ -71,18 +71,17 @@ void	pad_int(t_params *params, int count, int num)
 	}
 }
 
-void	pint_helper(t_params *params, int num)
+void	pint_helper(t_params *params, int *num)
 {
-	if (params->width > ft_base_numlength(num, 10))
-		pad_int(params, params->width - ft_base_numlength(num, 10), num);
+	if (params->width > ft_base_numlength(*num, 10))
+		pad_int(params, params->width - ft_base_numlength(*num, 10), *num);
 	else
 	{
-		if (params->plus_flag == 1 && num > 0)
+		if (params->plus_flag == 1 && *num > 0)
 			ft_putchar('+');
-		else if (params->space_flag == 1 && num > 0)
+		else if (params->space_flag == 1 && *num > 0)
 			ft_putchar(' ');
-		else
-			ft_putnbr(num);
+		ft_putnbr(*num);
 	}
 }
 
@@ -98,15 +97,17 @@ void	print_int(t_params *params, va_list var_list, char type)
 		return ;
 	}
 	num = grab_number(params, var_list);
-	if (!(num == 0 && params->precision_flag == 1 && params->precision == 0))
+	if (num == 0 && params->precision_flag == 1 && params->precision == 0)
 	{
-		if (params->precision_flag && params->width_flag)
-		{
-			print_int_wp(params, num, ft_base_numlength(num, 10));
-			params->printed = 1;
-			return ;
-		}
-		pint_helper(params, num);
+		params->printed = 1;
+		return ;
 	}
+	if (params->precision_flag && params->width_flag)
+	{
+		print_int_wp(params, num, ft_base_numlength(num, 10));
+		params->printed = 1;
+		return ;
+	}
+	pint_helper(params, &num);
 	params->printed = 1;
 }
