@@ -16,12 +16,12 @@ void		print_char(t_params *params, va_list var_list)
 {
 	char c;
 
-	c = va_arg(var_list, int);
 	if(params->modifier == 4)
 	{
 		print_wchar(params, var_list);
 		return ;
 	}	
+	c = va_arg(var_list, int);
 	ft_putchar(c);
 	params->printed = 1;
 }
@@ -31,6 +31,6 @@ void		print_wchar(t_params *params, va_list var_list)
 	wchar_t w;
 
 	w = va_arg(var_list, wchar_t);
-	ft_putchar((char)w);
+	ft_putchar(w);
 	params->printed = 1;
 }
