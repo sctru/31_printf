@@ -32,7 +32,7 @@ void		print_wchar(t_params *params, va_list var_list, int flag, int c_in)
 	int		c;
 
 	if(flag == 0)
-		c = va_arg(var_list, int;
+		c = va_arg(var_list, int);
 	else
 		c = c_in;
 	str = ft_strnew(4);
@@ -60,3 +60,4 @@ void		print_wchar(t_params *params, va_list var_list, int flag, int c_in)
 
 	params->printed = 1;
 }
+
