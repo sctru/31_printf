@@ -56,7 +56,7 @@ void		print_wchar(t_params *params, va_list var_list, int flag, int c_in)
 		str[2] = (c >> 6 & 0x3f) + 0x80;
 		str[3] = (c & 0x3f) + 0xc80;
 	}
-	ft_putstr(str);
+	ft_putchar(*str);
 
 	params->printed = 1;
 }
