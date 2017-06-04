@@ -19,7 +19,7 @@ INC = -I ./include
 
 MAIN = test.c
 
-FILES = ft_printf.c error_check.c  struct_stuff.c \
+FILES = ft_printf.c error_check.c  struct_stuff.c print_long_int.c\
 print_int.c print_s.c print_p.c print_o.c print_x.c print_u.c print_c.c \
 ft_base_numlength.c ft_putui_base.c libft_import.c libft_import2.c
 
