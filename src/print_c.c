@@ -28,36 +28,35 @@ void		print_char(t_params *params, va_list var_list)
 
 void		print_wchar(t_params *params, va_list var_list, int flag, int c_in)
 {
-	// char w;
-
-	// w = va_arg(var_list, int);
-	// ft_putchar(w);
-	
-	int		c;
-	char	wc[4];
-	size_t	index;
+	char	*str;
+	wchar_t		c;
 
 	if(flag == 0)
-		c = va_arg(var_list, int);
+		c = va_arg(var_list, wchar_t);
 	else
 		c = c_in;
-	index = 0;
-	wc[3] = (c >= 0x000000FF && ++index) ? (128 + c % 64) : c;
-	if (index == 1)
+	str = ft_strnew(4);
+	if (c <= 0x7F)
+		str[0] = c;
+	else if (c <= 0x7FF)
 	{
-		c = c >> 6;
-		wc[2] = (c >= 0x00000040 && ++index) ? ((128 + c % 64)) : (192 + c % 32);
+		str[0] = (c >> 6) + 0xc0;
+		str[1] = (c & 0x3f) + 0x80;
 	}
-	if (index == 2)
+	else if (c <= 0xFFFF)
 	{
-		c = c >> 6;
-		wc[1] = (c >= 0x00000010 && ++index) ? ((128 + c % 64)) : (224 + c);
+		str[0] = (c >> 12) + 0xe0;
+		str[1] = ((c >> 6) & 0x3f) + 0x80;
+		str[2] = (c & 0x3f) + 0x80;
 	}
-	if (index == 3)
+	else if (c <= 0x10FFFF)
 	{
-		c = c >> 6;
-		wc[0] = (240 + c);
+		str[0] = (c >> 18) + 0xf0;
+		str[1] = (c >> 12 & 0x3f) + 0x80;
+		str[2] = (c >> 6 & 0x3f) + 0x80;
+		str[3] = (c & 0x3f) + 0xc80;
 	}
-	write(1, &wc[3 - index], index + 1);
+	ft_putstr(str);
+
 	params->printed = 1;
 }

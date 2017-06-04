@@ -65,12 +65,12 @@ void	print_wstring(t_params *params, va_list var_list)
 	/* read va_args with wint_t, get size of wchar_t. Save as char *str, put str */
 	wchar_t *wstr;
 		
-	wstr = va_arg(var_list, void*);
+	wstr = va_arg(var_list, wchar_t*);
 
 	while(*wstr)
 	{
 		print_wchar(params, var_list, 1, *wstr++);
-		*wstr++;
+		(wstr)++;
 	}
 	
 	params->printed = 1;
