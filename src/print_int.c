@@ -12,9 +12,9 @@
 
 #include "libftprintf.h"
 
-int		grab_number(t_params *params, va_list var_list)
+long long	grab_number(t_params *params, va_list var_list)
 {
-	int	num;
+	long long	num;
 	
 	num = 0;
 	if(params->modifier == 1)
@@ -52,8 +52,6 @@ void	pad_int(t_params *params, int count, int num)
 {
 	if((params->plus_flag == 1 || params->space_flag == 1) && num > 0)
 		count--;
-	if(params->precision_flag && params->width_flag && params->precision > params->width)
-		count++;
 	if(params->minus_flag == 1)
 	{
 		if(params->plus_flag == 1 && num > 0)
@@ -77,7 +75,7 @@ void	pad_int(t_params *params, int count, int num)
 void	print_int(t_params *params, va_list var_list)
 {
 	int	len;
-	int	num;
+	long long	num;
 
 	num = grab_number(params, var_list);
 	len = ft_base_numlength(num, 10);

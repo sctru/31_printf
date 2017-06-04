@@ -41,13 +41,8 @@ void	ft_putui_base(unsigned long num, unsigned int base, int cap, t_params *para
 		ft_putchar(basestr[cap][(num % base)]);
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(long long n)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return ;
-	}
 	if (n < 0)
 	{
 		ft_putchar('-');
