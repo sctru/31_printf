@@ -44,7 +44,7 @@ void	pad_oct(t_params *params, int count, unsigned int num)
 			ft_putchar('+');
 		if(params->space_flag == 1 && num > 0)
 			ft_putchar(' ');
-		ft_putui_base(num, 8, 0);
+		ft_putui_base(num, 8, 0, params);
 		print_fill(params, count);
 	}
 	else
@@ -54,7 +54,7 @@ void	pad_oct(t_params *params, int count, unsigned int num)
 		if(params->space_flag == 1 && num > 0)
 			ft_putchar(' ');
 		print_fill(params, count);
-		ft_putui_base(num, 8, 0);
+		ft_putui_base(num, 8, 0, params);
 	}
 }
 
@@ -65,7 +65,6 @@ void		print_uint_oct(t_params *params, va_list var_list)
 	
 	num = grab_uint(params, var_list);
 	len = ft_base_numlength(num, 8);
-
 	if(!(num == 0 && params->precision_flag == 1 && params->precision == 0))
 	{
 		if(params->width > len)
@@ -76,7 +75,9 @@ void		print_uint_oct(t_params *params, va_list var_list)
 			ft_putchar('+');
 		else if(params->space_flag == 1 && num > 0)
 			ft_putchar(' ');
-		ft_putui_base(num, 8, 0);
+		if(params->pound_flag == 1)
+			ft_putchar('0');
+		ft_putui_base(num, 8, 0, params);
 		}
 	}
 	params->printed = 1;

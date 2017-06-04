@@ -16,8 +16,9 @@ void	print_pointer(t_params *params, va_list var_list)
 {
 	unsigned long stor;
 
-	stor = va_arg(var_list, unsigned long);
-	ft_putui_base(stor, 16, 0);
+	stor = va_arg(var_list, intmax_t);
+	params->pound_flag = 1;
+	ft_putui_base(stor, 16, 0, params);
 	params->printed = 1;
 }
 

@@ -22,7 +22,7 @@ void	pad_hex(t_params *params, int count, unsigned int num)
 			ft_putchar('+');
 		if(params->space_flag == 1 && num > 0)
 			ft_putchar(' ');
-		ft_putui_base(num, 16, 0);
+		ft_putui_base(num, 16, 0, params);
 		print_fill(params, count);
 	}
 	else
@@ -32,7 +32,7 @@ void	pad_hex(t_params *params, int count, unsigned int num)
 		if(params->space_flag == 1 && num > 0)
 			ft_putchar(' ');
 		print_fill(params, count);
-		ft_putui_base(num, 16, 0);
+		ft_putui_base(num, 16, 0, params);
 	}
 }
 
@@ -40,7 +40,7 @@ void	print_uint_hex(t_params *params, va_list var_list, int cap)
 {
 	int				len;
 	unsigned int	num;
-
+	
 	num = grab_uint(params, var_list);
 	len = ft_base_numlength(num, 16);
 	if(!(num == 0 && params->precision_flag == 1 && params->precision == 0))
@@ -53,7 +53,7 @@ void	print_uint_hex(t_params *params, va_list var_list, int cap)
 				ft_putchar('+');
 			else if(params->space_flag == 1 && num > 0)
 				ft_putchar(' ');
-			ft_putui_base(num, 16, cap);
+			ft_putui_base(num, 16, cap, params);
 		}
 	}
 	params->printed = 1;

@@ -22,7 +22,7 @@ void	pad_uint(t_params *params, int count, unsigned int num)
 			ft_putchar('+');
 		if(params->space_flag == 1 && num > 0)
 			ft_putchar(' ');
-		ft_putui_base(num, 10, 0);
+		ft_putui_base(num, 10, 0, params);
 		print_fill(params, count);
 	}
 	else
@@ -32,7 +32,7 @@ void	pad_uint(t_params *params, int count, unsigned int num)
 		if(params->space_flag == 1 && num > 0)
 			ft_putchar(' ');
 		print_fill(params, count);
-		ft_putui_base(num, 10, 0);
+		ft_putui_base(num, 10, 0, params);
 	}
 }
 
@@ -53,7 +53,7 @@ void			print_uint_b10(t_params *params, va_list var_list)
 			ft_putchar('+');
 		else if(params->space_flag == 1 && num > 0)
 			ft_putchar(' ');
-		ft_putui_base(num, 10, 0);
+		ft_putui_base(num, 10, 0, params);
 		}
 	}
 	params->printed = 1;

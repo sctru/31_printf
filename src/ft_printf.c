@@ -27,9 +27,9 @@ void	parse_helper(char **str, t_params *params, va_list var_list)
 	if(**str == 'u' || **str == 'U')
 		print_uint_b10(params, var_list);
 	if(**str == 'x')
-		print_uint_hex(params, var_list, 0);
-	if(**str == 'X')
 		print_uint_hex(params, var_list, 1);
+	if(**str == 'X')
+		print_uint_hex(params, var_list, 0);
 	if(**str == 'c')
 		print_char(params, var_list);
 	if(**str == 'C')
