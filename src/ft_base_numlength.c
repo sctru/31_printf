@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int	ft_base_numlength(long number, int base)
+size_t	ft_base_numlength(long number, int base)
 {
 	int neg_flag;
 	int count;
@@ -30,5 +30,5 @@ int	ft_base_numlength(long number, int base)
 	}
 	if (neg_flag)
 		return (count + 1);
-	return (count);
+	return ((size_t)count);
 }

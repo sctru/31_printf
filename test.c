@@ -62,18 +62,20 @@ int main (int argc, char **argv)
 
 	test.modifier = 0;
 	
-	char	*string2 = "abcdefghijklmn";
-	short x = 62;
-	long y = 987;
-	long long z = 10451;
-	unsigned long ul = 711;
-	char c = 'c';
-	int a = 070;
-	unsigned int b = 0xFFFFF;
-	int g = 2147483648;
-	
-	ft_printf("%+i\n", 41482);
-	ft_printf("%+d\n", 41482);
-	ft_printf("%+i\n", -42);
+	// char	*string2 = "abcdefghijklmn";
+	// short x = 62;
+	// long y = 987;
+	// long long z = 10451;
+	// unsigned long ul = 711;
+	// char c = 'c';
+	// int a = 070;
+	// unsigned int b = 0xFFFFF;
+	// int g = 2147483648;
+char *test1 = "pouet pouet camembert !!";
+char *test2 = "Ceci n'est pas un  !";
+char *test3 = "Ceci n'est toujours pas un exercice !!";
+char *test4 = NULL;
+char *test5 = "Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdecœurc'étaitunsoirde2005,j'étaisinvitéàuneconférenceàLaSorbonnepourparlerdelachansonfrancaiseetdel'écrituredetexteavecpleinsd'autresgens.ParmilesstarsémergentesilyavaitOliviaRuizquietaitentraindedevenirunestaravecsachansonsurlechocolatàlacon.Brefjeelretrouvecoincélorsd'une";
 
+ft_printf("1%s\n2%s\n3%s\n4%s\n5%s\n", test1, test2, test3, test4, test5);
 }

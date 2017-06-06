@@ -61,7 +61,7 @@ void			pad_oct(t_params *params, int count, unsigned int num)
 void			print_uint_oct(t_params *params, va_list var_list)
 {
 	unsigned int	num;
-	int				len;
+	size_t			len;
 
 	num = grab_uint(params, var_list);
 	len = ft_base_numlength(num, 8);

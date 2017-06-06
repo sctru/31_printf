@@ -38,7 +38,7 @@ void	pad_hex(t_params *params, int count, unsigned int num)
 
 void	print_uint_hex(t_params *params, va_list var_list, int cap)
 {
-	int				len;
+	size_t			len;
 	unsigned int	num;
 
 	num = grab_uint(params, var_list);
