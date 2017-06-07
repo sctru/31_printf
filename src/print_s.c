@@ -35,6 +35,11 @@ void	print_string(t_params *params, va_list var_list)
 	int		len;
 	char	*str;
 
+	if(params->modifier == 'l')
+	{
+		print_wstring(params, var_list);
+		return ;
+	}
 	str = va_arg(var_list, char*);
 	len = ft_strlen(str);
 	if (params->minus_flag)
