@@ -21,9 +21,9 @@ void	string_fill(char c, int len)
 		ft_putchar(c);
 }
 
-void	part_string(char *str, size_t len)
+void	part_string(char *str, int len)
 {
-	size_t x;
+	int x;
 
 	x = 0;
 	while (x < len && str[x] != '\0')
@@ -32,7 +32,7 @@ void	part_string(char *str, size_t len)
 
 void	print_string(t_params *params, va_list var_list)
 {
-	size_t	len;
+	int		len;
 	char	*str;
 
 	str = va_arg(var_list, char*);

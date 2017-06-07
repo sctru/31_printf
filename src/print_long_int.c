@@ -57,7 +57,7 @@ void		print_big_int(t_params *params, va_list var_list)
 	params->printed = 1;
 }
 
-void		piwp_helper(t_params *params, int num, size_t len)
+void		piwp_helper(t_params *params, int num, int len)
 {
 	if (params->precision > len)
 		if (params->minus_flag)
@@ -79,7 +79,7 @@ void		piwp_helper(t_params *params, int num, size_t len)
 	}
 }
 
-void		print_int_wp(t_params *params, int num, size_t len)
+void		print_int_wp(t_params *params, int num, int len)
 {
 	if (params->precision > params->width && params->precision > len)
 	{

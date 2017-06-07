@@ -23,9 +23,9 @@ typedef struct	s_params
 	char		printed;
 	char		modifier;
 	char		width_flag;
-	size_t		width;
+	int			width;
 	char		precision_flag;
-	size_t		precision;
+	int			precision;
 	char		pound_flag;
 	char		zero_flag;
 	char		minus_flag;
@@ -43,11 +43,11 @@ int				parse_string(char **str, va_list var_list);
 int				error_check(char *str, va_list var_list);
 
 void			string_fill(char c, int len);
-void			print_int_wp(t_params *params, int num, size_t len);
+void			print_int_wp(t_params *params, int num, int len);
 void			pad_int(t_params *params, int count, int num);
 void			print_fill(t_params *params, int count);
 int				grab_number(t_params *params, va_list var_list);
-size_t			ft_base_numlength(long number, int base);
+int				ft_base_numlength(long number, int base);
 void			print_big_int(t_params *params, va_list var_list);
 void			put_big_number(long long n);
 long long		grab_big_num(t_params *params, va_list var_list);

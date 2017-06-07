@@ -76,7 +76,7 @@ void				print_big_uint(t_params *params, va_list var_list)
 
 void				print_uint_b10(t_params *params, va_list var_list)
 {
-	size_t			len;
+	int				len;
 	unsigned int	num;
 
 	if (params->modifier > 2)
