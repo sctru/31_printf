@@ -17,7 +17,7 @@ void	parse_helper(char **str, t_params *params, va_list var_list)
 	if (**str == 's')
 		print_string(params, var_list);
 	else if (**str == 'S')
-		print_wstring(params, var_list);
+		print_string(params, var_list);
 	else if (**str == 'p')
 		print_pointer(params, var_list);
 	else if (**str == 'i' || **str == 'd' || **str == 'D')
