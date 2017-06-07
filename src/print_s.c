@@ -35,7 +35,7 @@ void	print_string(t_params *params, va_list var_list)
 	int		len;
 	char	*str;
 
-	if(params->modifier == 'l')
+	if(params->modifier == 4)
 	{
 		print_wstring(params, var_list);
 		return ;
